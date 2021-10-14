@@ -26,14 +26,12 @@ const text = [
 const mainBox = document.querySelector("#main-box")
 const sideBox = document.querySelector("#side-box")
 
-
-
 let indice = 0
 
 for (let x = 0; x < items.length; x++) {
     const itemsImg = items[x];
     const country = title[x]
-    const textStyle = text[x]
+    
 
     let activeStyle = ""
     let activeText= ""
@@ -68,13 +66,20 @@ arrowUp.addEventListener("click", function(){
     activeTextStyle.classList.remove("active-text")
    
     indice--
-   
+    console.log("nuovo indice",indice)
     const imgDom = document.querySelectorAll("#main-box img")
     const imgThumb =document.querySelectorAll("#side-box img")
     const styleText=document.querySelectorAll("h1")
+
+    
+    if(indice < 0){
+        indice= items.length -1
+    }
+
     imgDom[indice].classList.add("active")
     imgThumb[indice].classList.add("active")
     styleText[indice].classList.add("active-text")
+
 
 
 
@@ -96,6 +101,11 @@ arrowDown.addEventListener("click", function(){
     const imgDom = document.querySelectorAll("#main-box img")
     const imgThumb =document.querySelectorAll("#side-box img")
     const styleText=document.querySelectorAll("h1")
+
+    if(indice > 4){
+        indice= items.length -5
+    }
+
     imgDom[indice].classList.add("active")
     imgThumb[indice].classList.add("active")
     styleText[indice].classList.add("active-text")
